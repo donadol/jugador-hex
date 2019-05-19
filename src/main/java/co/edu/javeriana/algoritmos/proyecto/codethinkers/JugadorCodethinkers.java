@@ -6,9 +6,9 @@ import co.edu.javeriana.algoritmos.proyecto.Jugada;
 import co.edu.javeriana.algoritmos.proyecto.JugadorHex;
 import co.edu.javeriana.algoritmos.proyecto.Tablero;
 
-public class jugadorCodethinkers implements JugadorHex {
+public class JugadorCodethinkers implements JugadorHex {
 	private int contJugadas;
-	public jugadorCodethinkers() {
+	public JugadorCodethinkers() {
 		super();
 		contJugadas=0;
 	}
@@ -18,7 +18,7 @@ public class jugadorCodethinkers implements JugadorHex {
 			return primeraJugada(tablero, color);
 		}
 		else {
-			// plan Jhonny, plan
+			// plan Jhonny, plang
 		}
 		contJugadas++;
 		return null;
@@ -26,17 +26,16 @@ public class jugadorCodethinkers implements JugadorHex {
 
 	@Override
 	public String nombreJugador() {
-		// TODO Auto-generated method stub
-		return null;
+		return "ElMejorJugadorDeHexDelUniverso";
 	}
 	
 	public Jugada primeraJugada(Tablero tablero, ColorJugador color) {
-		List<ArrayList<Integer>> posiblesJugadas = new ArrayList<ArrayList<Integer>>(14);
+		List<ArrayList<Integer>> posiblesJugadas = new ArrayList<ArrayList<Integer>>();
 		if(color==ColorJugador.NEGRO) { //inicia juego	
-			for(int i=0; i<2; ++i) {
+			for(int i=0; i<3; ++i) {
 				posiblesJugadas.add(new ArrayList<Integer>(Arrays.asList(2,i)));
 			}
-			for(int i=0; i<3; ++i) {
+			for(int i=0; i<4; ++i) {
 				posiblesJugadas.add(new ArrayList<Integer>(Arrays.asList(3,i)));
 			}
 			for(int i=11; i>7; --i) {
@@ -45,7 +44,7 @@ public class jugadorCodethinkers implements JugadorHex {
 			for(int i=11; i>8; --i) {
 				posiblesJugadas.add(new ArrayList<Integer>(Arrays.asList(8,i)));
 			}
-			int x = (int) (Math.random()%15);
+			int x = (int) (Math.random()*posiblesJugadas.size());
 			return new Jugada(false, posiblesJugadas.get(x).get(0).intValue(), posiblesJugadas.get(x).get(1).intValue());
 		}
 		else {
