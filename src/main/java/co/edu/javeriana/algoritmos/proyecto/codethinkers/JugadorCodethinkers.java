@@ -7,6 +7,7 @@ import co.edu.javeriana.algoritmos.proyecto.JugadorHex;
 import co.edu.javeriana.algoritmos.proyecto.Tablero;
 
 public class JugadorCodethinkers implements JugadorHex {
+	
 	private int contJugadas;
 	public JugadorCodethinkers() {
 		super();
@@ -26,7 +27,7 @@ public class JugadorCodethinkers implements JugadorHex {
 
 	@Override
 	public String nombreJugador() {
-		return "ElMejorJugadorDeHexDelUniverso";
+		return "ElMejorJugadorDeHexDelUniversoEnteroProfePonganos5";
 	}
 	
 	public Jugada primeraJugada(Tablero tablero, ColorJugador color) {
