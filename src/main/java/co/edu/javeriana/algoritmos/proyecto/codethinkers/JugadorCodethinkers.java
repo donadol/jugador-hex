@@ -18,9 +18,11 @@ public class JugadorCodethinkers implements JugadorHex {
 	
 	@Override
 	public Jugada jugar(Tablero tablero, ColorJugador color) {
+		System.out.println("Soy "+color+" llevo "+this.contJugadas);
 		int fila1 = 0, columna1 = 0, fila2 = 0, columna2 = 0;
 		int max=-9999, min=9999, aux;
 		ColorJugador contrincante = ColorJugador.NEGRO;
+		actualizarGrafo(tablero);
 		if(color == ColorJugador.NEGRO)
 			contrincante = ColorJugador.BLANCO;
 		if(contJugadas==0) {
@@ -28,7 +30,7 @@ public class JugadorCodethinkers implements JugadorHex {
 			return primeraJugada(tablero, color);
 		}
 		else {
-			actualizarJugada(tablero);
+			System.out.println("Vamos hacer un grafo");
 			for(int i=0; i<11; ++i) {
 				for(int j=0; j<11; ++j) {
 					if(tablero.casilla(i, j) == null){
@@ -93,11 +95,12 @@ public class JugadorCodethinkers implements JugadorHex {
 					|| tablero.casilla(9,10)==ColorJugador.NEGRO || tablero.casilla(10,10)==ColorJugador.NEGRO || tablero.casilla(10,9)==ColorJugador.NEGRO) {
 				return new Jugada(5, 5);
 			}
-			return new Jugada(true, 0, 0);
+			int[] pos = obtenerJugada(tablero);
+			return new Jugada(true, pos[1], pos[0]);
 		}
 	}
 	
-	public void actualizarJugada(Tablero tablero) {
+	public void actualizarGrafo(Tablero tablero) {
 		for(int i=0; i<11; ++i) {
 			for(int j=0; j<11; ++j) {
 				if(tablero.casilla(i, j)!=this.grafoTablero.casilla(i, j)) {
@@ -105,5 +108,17 @@ public class JugadorCodethinkers implements JugadorHex {
 				}
 			}
 		}
+	}
+	public int[] obtenerJugada(Tablero tablero) {
+		int[] pos = new int[2];
+		for(int i=0; i<11; ++i) {
+			for(int j=0; j<11; ++j) {
+				if(tablero.casilla(i, j)!=this.grafoTablero.casilla(i, j)) {
+					pos[0]=i;
+					pos[1]=j;
+				}
+			}
+		}
+		return pos;
 	}
 }
