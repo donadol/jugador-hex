@@ -179,7 +179,6 @@ public class GrafoTablero {
 		if (esCasillaValida(i - 1, j)) 
 			vecinos.add(tablero [i - 1][j]);
 		
-		
 		if (esCasillaValida(i + 1, j)) 
 			vecinos.add(tablero [i + 1][j]);
 				
@@ -292,6 +291,23 @@ public class GrafoTablero {
 	
 	public void eliminarSimulacion (int fila, int columna) {
 		tablero[fila][columna].setColor(null);
+	}
+	
+	public void imprimirTablero() {
+		System.out.print("\n");
+		for(int i = 0; i < 11; i++) {
+			//System.out.print("Fila " + i + ": ");
+			for(int j = 0; j < 11; j++) {
+				if(tablero[i][j].getColor() == ColorJugador.BLANCO)
+					System.out.print("b ");
+				else if(tablero[i][j].getColor() == ColorJugador.NEGRO)
+					System.out.print("n ");
+				else
+					System.out.print(". ");
+			}
+			System.out.print("\n");
+		}
+		System.out.print("\n");
 	}
 	
 	
