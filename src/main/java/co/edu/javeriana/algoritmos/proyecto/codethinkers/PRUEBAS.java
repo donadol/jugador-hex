@@ -18,7 +18,7 @@ public class PRUEBAS {
 			grafo.simularJugada(5, 6, ColorJugador.BLANCO);
 			grafo.obtenerDistanciaBordes(ColorJugador.BLANCO);*/
 
-		for (int i = 0; i< 121; i++) {
+		/*for (int i = 0; i< 121; i++) {*/
 			grafo.simularJugada(8, 2, ColorJugador.BLANCO);
 			grafo.simularJugada(5, 3, ColorJugador.NEGRO);
 			grafo.simularJugada(9, 8, ColorJugador.BLANCO);
@@ -29,10 +29,11 @@ public class PRUEBAS {
 			grafo.simularJugada(6, 6, ColorJugador.NEGRO);
 
 			
-			System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
+		System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
+		System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
 			
 			//System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
-		}
+		
 		long endTime = System.nanoTime();
 		System.out.println("Duración: " + (endTime-startTime)/1e6 + " ms");
 		
