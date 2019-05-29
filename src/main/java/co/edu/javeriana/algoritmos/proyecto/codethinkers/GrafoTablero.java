@@ -104,13 +104,17 @@ public class GrafoTablero {
 		}
 		
 		
-		/*
-		VerticeHex prueba = bordeBlancoDerecha;
+		VerticeHex prueba;
+		if (color == ColorJugador.BLANCO)
+			prueba = bordeBlancoDerecha;
+		else
+			prueba = bordeNegroInferior;
+		
 		while (prueba != null) {
 			prueba = previo.get(prueba);
 			if (prueba != null)
 				System.out.println (prueba.getFila() + "  " +prueba.getColumna());
-		}*/
+		}
 		
 		
 		if (color == ColorJugador.BLANCO) 
@@ -238,6 +242,12 @@ public class GrafoTablero {
 	
 	//(si es borde el costo debería ser 0 o restar 2)	
 	private int obtenerCostoArista (VerticeHex u, VerticeHex v, ColorJugador color) {
+		
+		if (u == bordeBlancoIzquierda || u == bordeBlancoDerecha || u == bordeNegroInferior || u == bordeNegroSuperior)
+			return 1;
+		
+		if (v == bordeBlancoIzquierda || v == bordeBlancoDerecha || v == bordeNegroInferior || v == bordeNegroSuperior)
+			return 1;
 		
 		
 		if (u.getColor() == null && v.getColor() == null) {
