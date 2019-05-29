@@ -15,6 +15,7 @@ public class JugadorCodethinkers implements JugadorHex {
 		contJugadas=0;
 		grafoTablero = new GrafoTablero();
 	}
+	
 	@Override
 	public Jugada jugar(Tablero tablero, ColorJugador color) {
 		int fila1 = 0, columna1 = 0, fila2 = 0, columna2 = 0;
@@ -23,6 +24,7 @@ public class JugadorCodethinkers implements JugadorHex {
 		if(color == ColorJugador.NEGRO)
 			contrincante = ColorJugador.BLANCO;
 		if(contJugadas==0) {
+			this.contJugadas++;
 			return primeraJugada(tablero, color);
 		}
 		else {
@@ -58,7 +60,7 @@ public class JugadorCodethinkers implements JugadorHex {
 				}
 			}
 		}
-		contJugadas++;
+		this.contJugadas++;
 		grafoTablero.aplicarJugada(fila1, columna1, color);
 		return new Jugada(fila1, columna1);
 	}
