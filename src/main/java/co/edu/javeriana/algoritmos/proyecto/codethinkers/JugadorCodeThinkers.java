@@ -102,7 +102,6 @@ public class JugadorCodeThinkers implements JugadorHex {
 			return primeraJugada(tablero, color);
 		}
 		else {
-			System.out.println("Vamos hacer un grafo");
 			for(int i=0; i<11; ++i) {
 				for(int j=0; j<11; ++j) {
 					if(tablero.casilla(i, j) == null){
@@ -113,6 +112,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 								if(k!=i && l!=j) {
 									if(tablero.casilla(k, l)==null) {
 										grafoTablero.simularJugada(k, l, contrincante);
+
 										aux =  grafoTablero.obtenerDistanciaBordes(contrincante) - grafoTablero.obtenerDistanciaBordes(color);
 										if(aux<min){
 											min = aux;
@@ -124,6 +124,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 								}
 							}	
 						}
+
 						
 						
 						
@@ -141,6 +142,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 						
 						
 						
+
 						grafoTablero.eliminarSimulacion(i, j);
 						min = 99999;
 					}
