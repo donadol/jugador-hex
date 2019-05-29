@@ -6,10 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+
 import co.edu.javeriana.algoritmos.proyecto.ColorJugador;
 
 public class GrafoTablero {
-	private static int INF = Integer.MAX_VALUE;
+	private static int INF = 1000;
 	
 	private static int TAM_TABLERO = 11;
 	
@@ -79,6 +80,9 @@ public class GrafoTablero {
 
 		PriorityQueue<VerticeHex> colaPrioridad = new PriorityQueue<VerticeHex>((11*11+4), new ComparadorVerticeHex());
 		colaPrioridad.add(inicio);
+		
+		Map <VerticeHex, VerticeHex> previo = new HashMap <VerticeHex, VerticeHex>();
+		previo.put(inicio, null);
 
 		while (!colaPrioridad.isEmpty()) {
 		
@@ -90,12 +94,28 @@ public class GrafoTablero {
 				if (!u.isMarcado()) {
 					costoAristavu = obtenerCostoArista(v, u, color);
 					if (u.getDistancia() > v.getDistancia() + costoAristavu) {
+						//System.out.println("Costo: "+ costoAristavu);
 						u.setDistancia(v.getDistancia() + costoAristavu);
+						previo.put(u, v);
 						colaPrioridad.offer(u);
 					}
 				}
 			}
 		}
+		
+		
+		VerticeHex prueba;
+		if (color == ColorJugador.BLANCO)
+			prueba = bordeBlancoDerecha;
+		else
+			prueba = bordeNegroInferior;
+		/*
+		while (prueba != null) {
+			prueba = previo.get(prueba);
+			if (prueba != null)
+				System.out.println (prueba.getFila() + "  " +prueba.getColumna());
+		}*/
+		
 		
 		if (color == ColorJugador.BLANCO) 
 			return bordeBlancoDerecha.getDistancia() - 1;
@@ -222,6 +242,12 @@ public class GrafoTablero {
 	//(si es borde el costo debería ser 0 o restar 2)	
 	private int obtenerCostoArista (VerticeHex u, VerticeHex v, ColorJugador color) {
 		
+		if (u == bordeBlancoIzquierda || u == bordeBlancoDerecha || u == bordeNegroInferior || u == bordeNegroSuperior)
+			return 1;
+		
+		if (v == bordeBlancoIzquierda || v == bordeBlancoDerecha || v == bordeNegroInferior || v == bordeNegroSuperior)
+			return 1;
+		
 		
 		if (u.getColor() == null && v.getColor() == null) {
 			return 1;
@@ -237,6 +263,9 @@ public class GrafoTablero {
 		//Perspectiva del blanco
 		if (color == ColorJugador.BLANCO) {
 			
+			if (u.getColor() == ColorJugador.NEGRO && v.getColor() == ColorJugador.NEGRO)
+				return INF;
+			
 			if (u.getColor() == ColorJugador.BLANCO && v.getColor() == ColorJugador.BLANCO)
 				return 0;
 			
@@ -246,17 +275,20 @@ public class GrafoTablero {
 			if (u.getColor() == null && v.getColor() == ColorJugador.BLANCO)
 				return 0;
 			
-			if (u.getColor() == null && v.getColor() == ColorJugador.NEGRO)
+			if (u.getColor() == null && v.getColor() == ColorJugador.NEGRO) {
+				//System.out.println("HOLAAA");
 				return INF;
+				
+			}
 			
 			if (u.getColor() == ColorJugador.NEGRO && v.getColor() == null)
 				return INF;
 			
-			
-						
-			
 		}
 		else { //Perspectiva del negro
+			
+			if (u.getColor() == ColorJugador.BLANCO && v.getColor() == ColorJugador.BLANCO)
+				return INF;
 			
 			if (u.getColor() == ColorJugador.NEGRO && v.getColor() == ColorJugador.NEGRO)
 				return 0;
@@ -282,8 +314,6 @@ public class GrafoTablero {
 		return (   (fila >= 0 && fila < TAM_TABLERO)  &&  (columna >= 0 && columna < TAM_TABLERO) );
 	}
 	
-	
-	
 	//que pasa si la jugada está por fuera del tablero?? 
 	public void simularJugada (int fila, int columna, ColorJugador color) {
 		tablero[fila][columna].setColor(color);
@@ -293,6 +323,7 @@ public class GrafoTablero {
 		tablero[fila][columna].setColor(null);
 	}
 	
+<<<<<<< HEAD
 	public void imprimirTablero() {
 		System.out.print("\n");
 		for(int i = 0; i < 11; i++) {
@@ -310,7 +341,17 @@ public class GrafoTablero {
 		System.out.print("\n");
 	}
 	
+=======
+	public ColorJugador casilla(int fila, int columna) {
+		return this.tablero[fila][columna].getColor();
+	}
 	
-
+	public void aplicarJugada (int fila, int columna, ColorJugador color) {
+		tablero[fila][columna].setColor(color);
+	}
+	
+	
+>>>>>>> b7e356c160d1b8a42828c49c871610d0c761e22b
+	
 
 }

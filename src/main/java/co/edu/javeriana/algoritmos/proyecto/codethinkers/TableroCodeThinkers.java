@@ -7,10 +7,34 @@ import co.edu.javeriana.algoritmos.proyecto.Tablero;
 public class TableroCodeThinkers implements Tablero{
 
 	
-	ColorJugador [][] tablero;
-	Boolean [][] tableroDeVisitado;
+	private ColorJugador [][] tablero;
+	private Boolean [][] tableroDeVisitado;
+	private int numeroJugadas = 0;
 	
-	
+	public ColorJugador[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(ColorJugador[][] tablero) {
+		this.tablero = tablero;
+	}
+
+	public Boolean[][] getTableroDeVisitado() {
+		return tableroDeVisitado;
+	}
+
+	public void setTableroDeVisitado(Boolean[][] tableroDeVisitado) {
+		this.tableroDeVisitado = tableroDeVisitado;
+	}
+
+	public int getNumeroJugadas() {
+		return numeroJugadas;
+	}
+
+	public void setNumeroJugadas(int numeroJugadas) {
+		this.numeroJugadas = numeroJugadas;
+	}
+
 	public TableroCodeThinkers() {
 		super();
 		this.tablero = new ColorJugador[11][11];
@@ -26,12 +50,24 @@ public class TableroCodeThinkers implements Tablero{
 
 	@Override
 	public void aplicarJugada(Jugada jugada, ColorJugador colorJugador) {
+<<<<<<< HEAD
 
 		if(!violaReglas(jugada.getFila(), jugada.getColumna())  &&  tablero[jugada.getFila()][jugada.getColumna()] == null) {
 			
 			tablero[jugada.getFila()][jugada.getColumna()] = colorJugador;	
 		
+=======
+		if(!violaReglas(jugada.getFila(), jugada.getColumna())) {
+			if(!jugada.isCambioColores() && this.tablero[jugada.getFila()][jugada.getColumna()]==null) {
+				tablero[jugada.getFila()][jugada.getColumna()] = colorJugador;	
+			}
+			else if(jugada.isCambioColores() && this.tablero[jugada.getFila()][jugada.getColumna()]!=colorJugador && this.numeroJugadas==1) {
+				this.tablero[jugada.getFila()][jugada.getColumna()] = null;
+				this.tablero[jugada.getColumna()][jugada.getFila()]=colorJugador;
+			}
+>>>>>>> b7e356c160d1b8a42828c49c871610d0c761e22b
 		}
+		this.numeroJugadas++;
 	}
 
 	
@@ -286,9 +322,17 @@ public class TableroCodeThinkers implements Tablero{
 	}
 	
 	public void imprimirTablero() {
-		System.out.print("\n");
+		System.out.print("  ");
 		for(int i = 0; i < 11; i++) {
-			//System.out.print("Fila " + i + ": ");
+			System.out.print("N ");
+		}
+		System.out.println();
+		for(int i = 0; i < 11; i++) {
+			for(int k = 0; k < i; k++) {
+				System.out.print(" ");
+			}
+			System.out.print("B ");
+			//System.out.printf(String.format("1%"+i+"s", "B "));
 			for(int j = 0; j < 11; j++) {
 				if(tablero[i][j] == ColorJugador.BLANCO)
 					System.out.print("b ");
@@ -297,9 +341,12 @@ public class TableroCodeThinkers implements Tablero{
 				else
 					System.out.print(". ");
 			}
-			System.out.print("\n");
+			System.out.println(" B");
 		}
-		System.out.print("\n");
+		System.out.print("            ");
+		for(int i = 0; i < 11; i++) {
+			System.out.print("N ");
+		}
 	}
 	
 	
@@ -311,6 +358,5 @@ public class TableroCodeThinkers implements Tablero{
 			}
 		}
 	}
-	
 
 }

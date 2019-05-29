@@ -14,7 +14,7 @@ public class VerticeHex {
 	public VerticeHex() {
 		// TODO Auto-generated constructor stub
 		color = null;
-		distancia = Integer.MAX_VALUE;
+		distancia = 1000;
 		marcado = false;
 		
 		fila = -11;
@@ -23,8 +23,8 @@ public class VerticeHex {
 	}
 	
 	public VerticeHex(ColorJugador color) {
-		color = color;
-		distancia = Integer.MAX_VALUE;
+		this.color = color;
+		distancia = 1000;
 		marcado = false;
 	}
 
@@ -40,8 +40,8 @@ public class VerticeHex {
 		return distancia;
 	}
 
-	public void setDistancia(int costo) {
-		this.distancia = costo;
+	public void setDistancia(int distancia) {
+		this.distancia = distancia;
 	}
 
 	public boolean isMarcado() {
