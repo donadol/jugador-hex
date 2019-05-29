@@ -89,13 +89,13 @@ public class GrafoTablero {
 		
 			v = colaPrioridad.remove();
 			v.setMarcado(true);
-			System.out.println("Bueno: "+ v.getFila() +"  "+v.getColumna());
+			//System.out.println("Bueno: "+ v.getFila() +"  "+v.getColumna());
 			for (VerticeHex u: obtenerVecinos(v, color)) {
-				System.out.println("	Vecino: " + u.getFila() +" "+ u.getColumna());
+				//System.out.println("	Vecino: " + u.getFila() +" "+ u.getColumna());
 				if (!u.isMarcado()) {
 					costoAristavu = obtenerCostoArista(v, u, color);
 					if (u.getDistancia() > v.getDistancia() + costoAristavu) {
-						System.out.println("Costo: "+ costoAristavu);
+						//System.out.println("Costo: "+ costoAristavu);
 						u.setDistancia(v.getDistancia() + costoAristavu);
 						previo.put(u, v);
 						colaPrioridad.offer(u);
@@ -268,7 +268,7 @@ public class GrafoTablero {
 				return 0;
 			
 			if (u.getColor() == null && v.getColor() == ColorJugador.NEGRO) {
-				System.out.println("HOLAAA");
+				//System.out.println("HOLAAA");
 				return INF;
 				
 			}
