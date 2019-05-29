@@ -14,8 +14,8 @@ public class JugadorCodeThinkers implements JugadorHex {
 	private int [][] valoresCentro;
 	
 	private static int VALOR_AZULES = 2;
-	private static int VALOR_AMARILLOS = 4;
-	private static int VALOR_NARANJAS = 8;
+	private static int VALOR_AMARILLOS = 3;
+	private static int VALOR_NARANJAS = 5;
 	
 	public JugadorCodeThinkers() {
 		super();
@@ -128,8 +128,10 @@ public class JugadorCodeThinkers implements JugadorHex {
 						
 						
 						
-						aux2 = grafoTablero.obtenerDistanciaBordes(color) - grafoTablero.obtenerDistanciaBordes(contrincante)  - min;
-						aux2 -= valoresCentro[i][j];
+						aux2 = grafoTablero.obtenerDistanciaBordes(color) - grafoTablero.obtenerDistanciaBordes(contrincante)  + min;
+						if (contJugadas < 5) 
+							aux2 -= valoresCentro[i][j];
+						
 							
 						
 						if(aux2<min2) {
