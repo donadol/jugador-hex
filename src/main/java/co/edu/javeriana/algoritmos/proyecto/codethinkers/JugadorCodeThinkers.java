@@ -132,15 +132,11 @@ public class JugadorCodeThinkers implements JugadorHex {
 						aux2 -= valoresCentro[i][j];
 							
 						
-						System.out.println(grafoTablero.obtenerDistanciaBordes(contrincante));
 						if(aux2<min2) {
 							min2 = aux2;
 							fila1 = i;
 							columna1 = j;
-						}
-						
-						
-						
+						}					
 						
 
 						grafoTablero.eliminarSimulacion(i, j);
