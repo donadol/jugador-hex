@@ -253,9 +253,6 @@ public class GrafoTablero {
 			if (u.getColor() == ColorJugador.NEGRO && v.getColor() == null)
 				return INF;
 			
-			
-						
-			
 		}
 		else { //Perspectiva del negro
 			
@@ -294,7 +291,12 @@ public class GrafoTablero {
 		tablero[fila][columna].setColor(null);
 	}
 	
+	public ColorJugador casilla(int fila, int columna) {
+		return this.tablero[fila][columna].getColor();
+	}
 	
-
+	public void aplicarJugada (int fila, int columna, ColorJugador color) {
+		tablero[fila][columna].setColor(color);
+	}
 
 }
