@@ -280,8 +280,6 @@ public class GrafoTablero {
 		return (   (fila >= 0 && fila < TAM_TABLERO)  &&  (columna >= 0 && columna < TAM_TABLERO) );
 	}
 	
-	
-	
 	//que pasa si la jugada está por fuera del tablero?? 
 	public void simularJugada (int fila, int columna, ColorJugador color) {
 		tablero[fila][columna].setColor(color);
