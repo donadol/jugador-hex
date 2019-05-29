@@ -43,7 +43,7 @@ public class PRUEBAS_SOLITARIAS_F {
 		
 		grafo.simularJugada(7, 8, ColorJugador.BLANCO);
 		
-		JugadorCodethinkers jugador =new JugadorCodethinkers();
+		JugadorCodeThinkers jugador =new JugadorCodeThinkers();
 		
 
 		

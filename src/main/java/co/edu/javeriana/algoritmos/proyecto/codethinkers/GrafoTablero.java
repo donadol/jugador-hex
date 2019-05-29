@@ -57,9 +57,14 @@ public class GrafoTablero {
 		
 	}
 	
-	
-	
-	
+	public VerticeHex[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(VerticeHex[][] tablero) {
+		this.tablero = tablero;
+	}
+
 	public int obtenerDistanciaBordes (ColorJugador color) {
 		VerticeHex v;
 		int costoAristavu;

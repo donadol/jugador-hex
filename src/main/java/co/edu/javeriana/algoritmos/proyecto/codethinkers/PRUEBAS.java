@@ -17,10 +17,10 @@ public class PRUEBAS {
 		cj1 = ColorJugador.NEGRO;
 		cj2 = ColorJugador.BLANCO;
 		startTime = System.nanoTime();
-		j1 = new JugadorCodethinkers();
+		j1 = new JugadorCodeThinkers();
 		endTime = System.nanoTime();
 		System.out.println("Duración creando jugador: " + (endTime-startTime)/1e6 + " ms");
-		j2 = new JugadorCodethinkers();
+		j2 = new JugadorCodeThinkers();
 		Tablero tablero = new TableroCodeThinkers();
 		while(tablero.ganador()==null) {
 			pcVsPc(tablero);

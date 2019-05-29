@@ -6,16 +6,32 @@ import co.edu.javeriana.algoritmos.proyecto.Jugada;
 import co.edu.javeriana.algoritmos.proyecto.JugadorHex;
 import co.edu.javeriana.algoritmos.proyecto.Tablero;
 
-public class JugadorCodethinkers implements JugadorHex {
+public class JugadorCodeThinkers implements JugadorHex {
 	
 	private int contJugadas;
 	private GrafoTablero grafoTablero;
-	public JugadorCodethinkers() {
+	public JugadorCodeThinkers() {
 		super();
 		contJugadas=0;
 		grafoTablero = new GrafoTablero();
 	}
 	
+	public int getContJugadas() {
+		return contJugadas;
+	}
+
+	public void setContJugadas(int contJugadas) {
+		this.contJugadas = contJugadas;
+	}
+
+	public GrafoTablero getGrafoTablero() {
+		return grafoTablero;
+	}
+
+	public void setGrafoTablero(GrafoTablero grafoTablero) {
+		this.grafoTablero = grafoTablero;
+	}
+
 	@Override
 	public Jugada jugar(Tablero tablero, ColorJugador color) {
 		System.out.println("Soy "+color+" llevo "+this.contJugadas);
