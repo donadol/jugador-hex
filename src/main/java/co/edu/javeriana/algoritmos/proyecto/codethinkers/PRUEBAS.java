@@ -14,39 +14,39 @@ public class PRUEBAS {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		GrafoTablero grafo = new GrafoTablero();
-		long startTime = System.nanoTime();
-/*
-		for (int i = 0; i< 40000; i++) {
-			grafo.simularJugada(5, 5, ColorJugador.BLANCO);
-			grafo.simularJugada(5, 6, ColorJugador.BLANCO);
-			grafo.obtenerDistanciaBordes(ColorJugador.BLANCO);*/
-
-		
-			grafo.simularJugada(8, 2, ColorJugador.BLANCO);
-			grafo.simularJugada(9, 8, ColorJugador.BLANCO);
-			grafo.simularJugada(3, 4, ColorJugador.BLANCO);
-			grafo.simularJugada(9, 5, ColorJugador.BLANCO);
-			
-			
-			
-			grafo.simularJugada(5, 3, ColorJugador.NEGRO);
-			
-			grafo.simularJugada(7, 6, ColorJugador.NEGRO);
-			
-			grafo.simularJugada(1, 2, ColorJugador.NEGRO);
-			
-			grafo.simularJugada(6, 6, ColorJugador.NEGRO);
-
-			
-		System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
-		System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
-			
-			//System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
-		
-		long endTime = System.nanoTime();
-		System.out.println("Duración: " + (endTime-startTime)/1e6 + " ms");
-
+//		GrafoTablero grafo = new GrafoTablero();
+//		long startTime = System.nanoTime();
+///*
+//		for (int i = 0; i< 40000; i++) {
+//			grafo.simularJugada(5, 5, ColorJugador.BLANCO);
+//			grafo.simularJugada(5, 6, ColorJugador.BLANCO);
+//			grafo.obtenerDistanciaBordes(ColorJugador.BLANCO);*/
+//
+//		
+//			grafo.simularJugada(8, 2, ColorJugador.BLANCO);
+//			grafo.simularJugada(9, 8, ColorJugador.BLANCO);
+//			grafo.simularJugada(3, 4, ColorJugador.BLANCO);
+//			grafo.simularJugada(9, 5, ColorJugador.BLANCO);
+//			
+//			
+//			
+//			grafo.simularJugada(5, 3, ColorJugador.NEGRO);
+//			
+//			grafo.simularJugada(7, 6, ColorJugador.NEGRO);
+//			
+//			grafo.simularJugada(1, 2, ColorJugador.NEGRO);
+//			
+//			grafo.simularJugada(6, 6, ColorJugador.NEGRO);
+//
+//			
+//		System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
+//		System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
+//			
+//			//System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
+//		
+//		long endTime = System.nanoTime();
+//		System.out.println("Duración: " + (endTime-startTime)/1e6 + " ms");
+//
 
 		
 		teclado = new Scanner(System.in);
@@ -61,22 +61,27 @@ public class PRUEBAS {
 		while(tablero.ganador()==null) {
 			pcVsPc(tablero);
 		}
-		System.out.println(tablero.ganador());
+		if( cj1 == tablero.ganador())
+			System.out.println(tablero.ganador()+" GANE");
+		else
+			System.out.println(tablero.ganador()+" :(");
 	}
 	public static void pcVsPc(Tablero tablero) {
 		Jugada j;
-		startTime = System.nanoTime();
+		//startTime = System.nanoTime();
 		j= j1.jugar(tablero, cj1);
-		endTime = System.nanoTime();
-		System.out.println("Duración buscando una jugada para "+cj1+": "+ (endTime-startTime)/1e6 + " ms");
+		//endTime = System.nanoTime();
+		//System.out.println("Duración buscando una jugada para "+cj1+": "+ (endTime-startTime)/1e6 + " ms");
 		System.out.println(cj1.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + (j.getFila()+1) + ", columna=" + numToChar(j.getColumna())) + "]");
+		//System.out.print(numToChar(j.getFila())+""+(j.getColumna()+1)+" ");
 		tablero.aplicarJugada(j, cj1);
 		if(tablero.ganador()==null) {
-			startTime = System.nanoTime();
+			//startTime = System.nanoTime();
 			j= j2.jugar(tablero, cj2);
-			endTime = System.nanoTime();
-			System.out.println("Duración buscando una jugada para "+cj2+": "+ (endTime-startTime)/1e6 + " ms");
+			//endTime = System.nanoTime();
+			//System.out.println("Duración buscando una jugada para "+cj2+": "+ (endTime-startTime)/1e6 + " ms");
 			System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + (j.getFila()+1) + ", columna=" + numToChar(j.getColumna())) + "]");
+			//System.out.print(numToChar(j.getFila())+""+(j.getColumna()+1)+" ");
 			tablero.aplicarJugada(j, cj2);
 			if(j.isCambioColores()) {
 				cj1=ColorJugador.BLANCO;
