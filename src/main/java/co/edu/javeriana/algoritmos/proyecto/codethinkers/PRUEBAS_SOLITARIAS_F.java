@@ -59,7 +59,7 @@ public class PRUEBAS_SOLITARIAS_F {
 		
 		
 		
-		JugadorCodethinkers jugador = new JugadorCodethinkers();
+		JugadorCodeThinkers jugador = new JugadorCodeThinkers();
 		
 		TableroCodeThinkers tablero = new TableroCodeThinkers();
 		

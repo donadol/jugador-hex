@@ -298,8 +298,8 @@ public class PRUEBASPOPO {
 		System.out.println("------------------------------------PRUEBAS SOBRE JUAGAR---------------------------------------------");
 		System.out.println(" ");
 		
-		JugadorCodethinkers jugador = new JugadorCodethinkers();
-		JugadorCodethinkers jugador2 = new JugadorCodethinkers();
+		JugadorCodeThinkers jugador = new JugadorCodeThinkers();
+		JugadorCodeThinkers jugador2 = new JugadorCodeThinkers();
 		TableroCodeThinkers tablero =new TableroCodeThinkers();
 		
 		
