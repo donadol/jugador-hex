@@ -34,19 +34,19 @@ public class PRUEBAS {
 	}
 	public static void pcVsPc(Tablero tablero) {
 		Jugada j;
-		//startTime = System.nanoTime();
+		startTime = System.nanoTime();
 		j= j1.jugar(tablero, cj1);
-		//endTime = System.nanoTime();
-		//System.out.println("Duración buscando una jugada para "+cj1+": "+ (endTime-startTime)/1e6 + " ms");
-		System.out.println(cj1.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + numToChar(j.getFila()) + ", columna=" + (j.getColumna()+1)) + "]");
+		endTime = System.nanoTime();
+		System.out.println("Duración buscando una jugada para "+cj1+": "+ (endTime-startTime)/1e6 + " ms");
+		//System.out.println(cj1.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + numToChar(j.getFila()) + ", columna=" + (j.getColumna()+1)) + "]");
 		//System.out.print(numToChar(j.getFila())+""+(j.getColumna()+1)+" ");
 		tablero.aplicarJugada(j, cj1);
 		if(tablero.ganador()==null) {
-			//startTime = System.nanoTime();
+			startTime = System.nanoTime();
 			j= j2.jugar(tablero, cj2);
-			//endTime = System.nanoTime();
-			//System.out.println("Duración buscando una jugada para "+cj2+": "+ (endTime-startTime)/1e6 + " ms");
-			System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + numToChar(j.getFila()) + ", columna=" + (j.getColumna()+1)) + "]");
+			endTime = System.nanoTime();
+			System.out.println("Duración buscando una jugada para "+cj2+": "+ (endTime-startTime)/1e6 + " ms");
+			//System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + numToChar(j.getFila()) + ", columna=" + (j.getColumna()+1)) + "]");
 			//System.out.print(numToChar(j.getFila())+""+(j.getColumna()+1)+" ");
 			tablero.aplicarJugada(j, cj2);
 			if(j.isCambioColores()) {

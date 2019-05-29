@@ -14,19 +14,19 @@ public class LAURANOQUIEREPROBAR {
 		ColorJugador cj1 =ColorJugador.NEGRO, cj2 =ColorJugador.BLANCO;
 		int f, c;
 		while(tablero.ganador()==null) {
+			jug=j1.jugar(tablero, cj1);
+			System.out.println(cj1+" "+jug);
+			tablero.aplicarJugada(jug, cj1);
 			do {
 				f=(int) (Math.random()*11);
 				c=(int) (Math.random()*11);
 			}while(tablero.casilla(f, c)!=null);
-			tablero.aplicarJugada(new Jugada(f,c), cj1);
-			System.out.println("aleatorio "+cj1+" "+ new Jugada(f,c));
-			jug=j1.jugar(tablero, cj2);
-			System.out.println(cj2+" "+jug);
-			tablero.aplicarJugada(jug, cj2);
-			if(jug.isCambioColores()) {
-				cj1=ColorJugador.BLANCO;
-				cj2=ColorJugador.NEGRO;
-			}
+			tablero.aplicarJugada(new Jugada(f,c), cj2);
+			System.out.println("aleatorio "+cj2+" "+ new Jugada(f,c));
+//			if(jug.isCambioColores()) {
+//				cj1=ColorJugador.BLANCO;
+//				cj2=ColorJugador.NEGRO;
+//			}
 			((TableroCodeThinkers)tablero).imprimirTablero();
 		}
 		

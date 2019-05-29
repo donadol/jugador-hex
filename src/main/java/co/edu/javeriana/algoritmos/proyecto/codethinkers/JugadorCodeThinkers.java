@@ -68,8 +68,6 @@ public class JugadorCodeThinkers implements JugadorHex {
 		valoresCentro[6][4] = VALOR_NARANJAS;
 		valoresCentro[6][5] = VALOR_NARANJAS;
 		
-		
-		
 	}
 	
 	public int getContJugadas() {
@@ -90,7 +88,6 @@ public class JugadorCodeThinkers implements JugadorHex {
 
 	@Override
 	public Jugada jugar(Tablero tablero, ColorJugador color) {
-		System.out.println("Soy "+color+" llevo "+this.contJugadas);
 		int fila1 = 0, columna1 = 0, fila2 = 0, columna2 = 0;
 		int min2=9999, min=9999, aux, aux2;
 		ColorJugador contrincante = ColorJugador.NEGRO;
@@ -113,7 +110,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 									if(tablero.casilla(k, l)==null) {
 										grafoTablero.simularJugada(k, l, contrincante);
 
-										aux =  -grafoTablero.obtenerDistanciaBordes(contrincante) + grafoTablero.obtenerDistanciaBordes(color);
+										aux =  grafoTablero.obtenerDistanciaBordes(contrincante) - grafoTablero.obtenerDistanciaBordes(color);
 										if(aux<min){
 											min = aux;
 											fila2 = i;
@@ -126,7 +123,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 						}
 
 						
-						aux2 = grafoTablero.obtenerDistanciaBordes(color) + grafoTablero.obtenerDistanciaBordes(contrincante)  + min;
+						aux2 = grafoTablero.obtenerDistanciaBordes(color) - grafoTablero.obtenerDistanciaBordes(contrincante)-min;
 						if (contJugadas < 5) 
 							aux2 -= valoresCentro[i][j];
 						
