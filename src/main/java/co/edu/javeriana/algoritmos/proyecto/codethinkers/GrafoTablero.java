@@ -104,12 +104,12 @@ public class GrafoTablero {
 		}
 		
 		
-		VerticeHex prueba;
+		/*VerticeHex prueba;
 		if (color == ColorJugador.BLANCO)
 			prueba = bordeBlancoDerecha;
 		else
 			prueba = bordeNegroInferior;
-		/*
+		
 		while (prueba != null) {
 			prueba = previo.get(prueba);
 			if (prueba != null)
@@ -118,9 +118,9 @@ public class GrafoTablero {
 		
 		
 		if (color == ColorJugador.BLANCO) 
-			return bordeBlancoDerecha.getDistancia() - 1;
+			return bordeBlancoDerecha.getDistancia() ;
 		else
-			return bordeNegroInferior.getDistancia() - 1;
+			return bordeNegroInferior.getDistancia() ;
 		
 	}
 	
@@ -242,11 +242,11 @@ public class GrafoTablero {
 	//(si es borde el costo debería ser 0 o restar 2)	
 	private int obtenerCostoArista (VerticeHex u, VerticeHex v, ColorJugador color) {
 		
-		if (u == bordeBlancoIzquierda || u == bordeBlancoDerecha || u == bordeNegroInferior || u == bordeNegroSuperior)
-			return 1;
+		/*if (u == bordeBlancoIzquierda || u == bordeBlancoDerecha || u == bordeNegroInferior || u == bordeNegroSuperior)
+			return 0;
 		
 		if (v == bordeBlancoIzquierda || v == bordeBlancoDerecha || v == bordeNegroInferior || v == bordeNegroSuperior)
-			return 1;
+			return ;*/
 		
 		
 		if (u.getColor() == null && v.getColor() == null) {
@@ -347,5 +347,7 @@ public class GrafoTablero {
 	public void aplicarJugada (int fila, int columna, ColorJugador color) {
 		tablero[fila][columna].setColor(color);
 	}
+	
+
 
 }
