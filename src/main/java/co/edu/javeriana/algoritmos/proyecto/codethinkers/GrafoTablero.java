@@ -109,12 +109,12 @@ public class GrafoTablero {
 			prueba = bordeBlancoDerecha;
 		else
 			prueba = bordeNegroInferior;
-		
+		/*
 		while (prueba != null) {
 			prueba = previo.get(prueba);
 			if (prueba != null)
 				System.out.println (prueba.getFila() + "  " +prueba.getColumna());
-		}
+		}*/
 		
 		
 		if (color == ColorJugador.BLANCO) 

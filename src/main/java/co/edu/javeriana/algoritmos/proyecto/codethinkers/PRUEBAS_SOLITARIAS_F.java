@@ -42,8 +42,11 @@ public class PRUEBAS_SOLITARIAS_F {
 		grafo.simularJugada(5, 2, ColorJugador.BLANCO);
 		
 		grafo.simularJugada(7, 8, ColorJugador.BLANCO);
+		
+		JugadorCodethinkers jugador =new JugadorCodethinkers();
+		
 
-
+		
 			
 		System.out.println("NEGRO: "+grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
 		System.out.println("BLANCO: "+grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));

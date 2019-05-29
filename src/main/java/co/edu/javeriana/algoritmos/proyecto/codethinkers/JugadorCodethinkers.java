@@ -55,6 +55,7 @@ public class JugadorCodethinkers implements JugadorHex {
 							columna1 = columna2;
 						}
 						grafoTablero.eliminarSimulacion(i, j);
+						min = 99999;
 					}
 				}
 			}
