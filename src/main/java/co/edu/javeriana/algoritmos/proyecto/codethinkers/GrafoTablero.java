@@ -108,8 +108,8 @@ public class GrafoTablero {
 			}
 		}
 		
-		
-		/*VerticeHex prueba;
+		/*
+		VerticeHex prueba;
 		if (color == ColorJugador.BLANCO)
 			prueba = bordeBlancoDerecha;
 		else

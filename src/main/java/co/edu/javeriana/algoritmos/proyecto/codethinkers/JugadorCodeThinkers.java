@@ -10,10 +10,66 @@ public class JugadorCodeThinkers implements JugadorHex {
 	
 	private int contJugadas;
 	private GrafoTablero grafoTablero;
+	
+	private int [][] valoresCentro;
+	
+	private static int VALOR_AZULES = 2;
+	private static int VALOR_AMARILLOS = 4;
+	private static int VALOR_NARANJAS = 8;
+	
 	public JugadorCodeThinkers() {
 		super();
 		contJugadas=0;
 		grafoTablero = new GrafoTablero();
+		
+		valoresCentro = new int [11][11];	
+		
+		valoresCentro[2][5] = VALOR_AZULES;
+		valoresCentro[2][6] = VALOR_AZULES;
+		valoresCentro[2][7] = VALOR_AZULES;
+		valoresCentro[2][8] = VALOR_AZULES;
+		valoresCentro[3][4] = VALOR_AZULES;
+		valoresCentro[3][8] = VALOR_AZULES;
+		valoresCentro[4][3] = VALOR_AZULES;
+		valoresCentro[4][8] = VALOR_AZULES;
+		
+		valoresCentro[5][2] = VALOR_AZULES;
+		valoresCentro[5][8] = VALOR_AZULES;
+		valoresCentro[6][2] = VALOR_AZULES;
+		valoresCentro[6][7] = VALOR_AZULES;
+		
+		valoresCentro[7][2] = VALOR_AZULES;
+		valoresCentro[7][6] = VALOR_AZULES;
+		valoresCentro[8][2] = VALOR_AZULES;
+		valoresCentro[8][3] = VALOR_AZULES;
+		valoresCentro[8][4] = VALOR_AZULES;
+		valoresCentro[8][5] = VALOR_AZULES;
+		
+		
+		valoresCentro[3][5] = VALOR_AMARILLOS;
+		valoresCentro[3][6] = VALOR_AMARILLOS;
+		valoresCentro[3][7] = VALOR_AMARILLOS;
+		valoresCentro[4][4] = VALOR_AMARILLOS;
+		valoresCentro[4][7] = VALOR_AMARILLOS;
+		valoresCentro[5][3] = VALOR_AMARILLOS;
+		valoresCentro[5][7] = VALOR_AMARILLOS;
+		valoresCentro[6][3] = VALOR_AMARILLOS;
+		valoresCentro[6][6] = VALOR_AMARILLOS;
+		valoresCentro[7][3] = VALOR_AMARILLOS;
+		valoresCentro[7][4] = VALOR_AMARILLOS;
+		valoresCentro[7][5] = VALOR_AMARILLOS;
+		
+		
+		valoresCentro[4][5] = VALOR_NARANJAS;
+		valoresCentro[4][6] = VALOR_NARANJAS;
+		valoresCentro[5][4] = VALOR_NARANJAS;
+		valoresCentro[5][5] = VALOR_NARANJAS;
+		valoresCentro[5][6] = VALOR_NARANJAS;
+		valoresCentro[6][4] = VALOR_NARANJAS;
+		valoresCentro[6][5] = VALOR_NARANJAS;
+		
+		
+		
 	}
 	
 	public int getContJugadas() {
@@ -36,7 +92,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 	public Jugada jugar(Tablero tablero, ColorJugador color) {
 		System.out.println("Soy "+color+" llevo "+this.contJugadas);
 		int fila1 = 0, columna1 = 0, fila2 = 0, columna2 = 0;
-		int max=-9999, min=9999, aux;
+		int min2=9999, min=9999, aux, aux2;
 		ColorJugador contrincante = ColorJugador.NEGRO;
 		actualizarGrafo(tablero);
 		if(color == ColorJugador.NEGRO)
@@ -51,12 +107,13 @@ public class JugadorCodeThinkers implements JugadorHex {
 				for(int j=0; j<11; ++j) {
 					if(tablero.casilla(i, j) == null){
 						grafoTablero.simularJugada(i, j, color);
+						
 						for(int k=0; k<11; ++k) {
 							for(int l=0; l<11; ++l) {
 								if(k!=i && l!=j) {
 									if(tablero.casilla(k, l)==null) {
 										grafoTablero.simularJugada(k, l, contrincante);
-										aux = grafoTablero.obtenerDistanciaBordes(color) - grafoTablero.obtenerDistanciaBordes(contrincante);
+										aux =  grafoTablero.obtenerDistanciaBordes(contrincante) - grafoTablero.obtenerDistanciaBordes(color);
 										if(aux<min){
 											min = aux;
 											fila2 = i;
@@ -67,11 +124,23 @@ public class JugadorCodeThinkers implements JugadorHex {
 								}
 							}	
 						}
-						if(min>max) {
-							max = min;
-							fila1 = fila2;
-							columna1 = columna2;
+						
+						
+						
+						aux2 = grafoTablero.obtenerDistanciaBordes(color) - grafoTablero.obtenerDistanciaBordes(contrincante)  - min;
+						aux2 -= valoresCentro[i][j];
+							
+						
+						System.out.println(grafoTablero.obtenerDistanciaBordes(contrincante));
+						if(aux2<min2) {
+							min2 = aux2;
+							fila1 = i;
+							columna1 = j;
 						}
+						
+						
+						
+						
 						grafoTablero.eliminarSimulacion(i, j);
 						min = 99999;
 					}
@@ -137,4 +206,6 @@ public class JugadorCodeThinkers implements JugadorHex {
 		}
 		return pos;
 	}
+	
+
 }
