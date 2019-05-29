@@ -7,7 +7,7 @@ import co.edu.javeriana.algoritmos.proyecto.Tablero;
 public class TableroCodeThinkers implements Tablero{
 
 	
-	private ColorJugador [][] tablero;
+	public ColorJugador [][] tablero;
 	private Boolean [][] tableroDeVisitado;
 	private int numeroJugadas = 0;
 	
@@ -338,6 +338,7 @@ public class TableroCodeThinkers implements Tablero{
 		for(int i = 0; i < 11; i++) {
 			System.out.print("N ");
 		}
+		System.out.println();
 	}
 	
 	
