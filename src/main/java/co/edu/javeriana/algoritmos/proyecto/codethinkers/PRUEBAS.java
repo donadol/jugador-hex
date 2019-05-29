@@ -60,9 +60,11 @@ public class PRUEBAS {
 		Tablero tablero = new TableroCodeThinkers();
 		while(tablero.ganador()==null) {
 			pcVsPc(tablero);
+			((TableroCodeThinkers) tablero).imprimirTablero();
+			System.out.println();
 		}
 		if( cj1 == tablero.ganador())
-			System.out.println(tablero.ganador()+" GANE");
+			System.out.println(tablero.ganador()+" GANA");
 		else
 			System.out.println(tablero.ganador()+" :(");
 	}
@@ -72,7 +74,7 @@ public class PRUEBAS {
 		j= j1.jugar(tablero, cj1);
 		//endTime = System.nanoTime();
 		//System.out.println("Duración buscando una jugada para "+cj1+": "+ (endTime-startTime)/1e6 + " ms");
-		System.out.println(cj1.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + (j.getFila()+1) + ", columna=" + numToChar(j.getColumna())) + "]");
+		System.out.println(cj1.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + numToChar(j.getFila()) + ", columna=" + (j.getColumna()+1)) + "]");
 		//System.out.print(numToChar(j.getFila())+""+(j.getColumna()+1)+" ");
 		tablero.aplicarJugada(j, cj1);
 		if(tablero.ganador()==null) {
@@ -80,13 +82,13 @@ public class PRUEBAS {
 			j= j2.jugar(tablero, cj2);
 			//endTime = System.nanoTime();
 			//System.out.println("Duración buscando una jugada para "+cj2+": "+ (endTime-startTime)/1e6 + " ms");
-			System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + (j.getFila()+1) + ", columna=" + numToChar(j.getColumna())) + "]");
+			System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + numToChar(j.getFila()) + ", columna=" + (j.getColumna()+1)) + "]");
 			//System.out.print(numToChar(j.getFila())+""+(j.getColumna()+1)+" ");
 			tablero.aplicarJugada(j, cj2);
-			if(j.isCambioColores()) {
-				cj1=ColorJugador.BLANCO;
-				cj2=ColorJugador.NEGRO;
-			}
+//			if(j.isCambioColores()) {
+//				cj1=ColorJugador.BLANCO;
+//				cj2=ColorJugador.NEGRO;
+//			}
 		}
 	}
 	public static void playerVsPc(Tablero tablero) {
@@ -103,10 +105,10 @@ public class PRUEBAS {
 			System.out.println("Duración buscando una jugada para "+cj2+": "+ (endTime-startTime)/1e6 + " ms");
 			System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + (j.getFila()+1) + ", columna=" + numToChar(j.getColumna())) + "]");
 			tablero.aplicarJugada(j, cj2);
-			if(j.isCambioColores()) {
-				cj1=ColorJugador.BLANCO;
-				cj2=ColorJugador.NEGRO;
-			}
+//			if(j.isCambioColores()) {
+//				cj1=ColorJugador.BLANCO;
+//				cj2=ColorJugador.NEGRO;
+//			}
 		}
 	}
 	public static void pcVsPlayer(Tablero tablero) {
@@ -125,8 +127,8 @@ public class PRUEBAS {
 				j= new Jugada (true, fila-1, charToNum(columna));
 				System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + (j.getFila()+1) + ", columna=" + numToChar(j.getColumna())) + "]");
 				tablero.aplicarJugada(j, cj2);
-				cj1=ColorJugador.BLANCO;
-				cj2=ColorJugador.NEGRO;
+//				cj1=ColorJugador.BLANCO;
+//				cj2=ColorJugador.NEGRO;
 			}
 			else{
 				j= new Jugada (fila-1, charToNum(columna));

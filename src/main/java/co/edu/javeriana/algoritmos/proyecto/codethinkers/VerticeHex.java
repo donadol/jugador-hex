@@ -23,7 +23,7 @@ public class VerticeHex {
 	}
 	
 	public VerticeHex(ColorJugador color) {
-		color = color;
+		this.color = color;
 		distancia = 1000;
 		marcado = false;
 	}

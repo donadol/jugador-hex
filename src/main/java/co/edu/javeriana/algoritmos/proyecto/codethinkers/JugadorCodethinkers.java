@@ -36,7 +36,7 @@ public class JugadorCodethinkers implements JugadorHex {
 						for(int k=0; k<11; ++k) {
 							for(int l=0; l<11; ++l) {
 								if(k!=i && l!=j) {
-									if(tablero.casilla(i, j)==null) {
+									if(tablero.casilla(k, l)==null) {
 										grafoTablero.simularJugada(k, l, contrincante);
 										aux = grafoTablero.obtenerDistanciaBordes(contrincante);
 										if(aux<min){
