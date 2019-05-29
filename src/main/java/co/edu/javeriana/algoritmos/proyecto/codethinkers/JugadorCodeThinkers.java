@@ -113,7 +113,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 									if(tablero.casilla(k, l)==null) {
 										grafoTablero.simularJugada(k, l, contrincante);
 
-										aux =  grafoTablero.obtenerDistanciaBordes(contrincante) - grafoTablero.obtenerDistanciaBordes(color);
+										aux =  -grafoTablero.obtenerDistanciaBordes(contrincante) + grafoTablero.obtenerDistanciaBordes(color);
 										if(aux<min){
 											min = aux;
 											fila2 = i;
@@ -128,7 +128,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 						
 						
 						
-						aux2 = grafoTablero.obtenerDistanciaBordes(color) - grafoTablero.obtenerDistanciaBordes(contrincante)  + min;
+						aux2 = grafoTablero.obtenerDistanciaBordes(color) + grafoTablero.obtenerDistanciaBordes(contrincante)  + min;
 						if (contJugadas < 5) 
 							aux2 -= valoresCentro[i][j];
 						
