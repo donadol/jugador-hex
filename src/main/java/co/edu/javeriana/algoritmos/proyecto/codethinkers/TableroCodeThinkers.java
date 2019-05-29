@@ -50,13 +50,12 @@ public class TableroCodeThinkers implements Tablero{
 
 	@Override
 	public void aplicarJugada(Jugada jugada, ColorJugador colorJugador) {
-<<<<<<< HEAD
+
 
 		if(!violaReglas(jugada.getFila(), jugada.getColumna())  &&  tablero[jugada.getFila()][jugada.getColumna()] == null) {
 			
 			tablero[jugada.getFila()][jugada.getColumna()] = colorJugador;	
-		
-=======
+
 		if(!violaReglas(jugada.getFila(), jugada.getColumna())) {
 			if(!jugada.isCambioColores() && this.tablero[jugada.getFila()][jugada.getColumna()]==null) {
 				tablero[jugada.getFila()][jugada.getColumna()] = colorJugador;	
@@ -65,11 +64,11 @@ public class TableroCodeThinkers implements Tablero{
 				this.tablero[jugada.getFila()][jugada.getColumna()] = null;
 				this.tablero[jugada.getColumna()][jugada.getFila()]=colorJugador;
 			}
->>>>>>> b7e356c160d1b8a42828c49c871610d0c761e22b
-		}
-		this.numeroJugadas++;
-	}
 
+		}
+			this.numeroJugadas++;
+		}
+	}
 	
 	@Override
 	public ColorJugador ganador() {

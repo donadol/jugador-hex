@@ -1,5 +1,7 @@
 package co.edu.javeriana.algoritmos.proyecto.codethinkers;
 
+import java.util.List;
+
 import co.edu.javeriana.algoritmos.proyecto.ColorJugador;
 
 public class PRUEBAS_SOLITARIAS_F {
@@ -9,6 +11,8 @@ public class PRUEBAS_SOLITARIAS_F {
 	}
 
 	public static void main(String[] args) {
+		
+		
 		GrafoTablero grafo = new GrafoTablero();
 		long startTime = System.nanoTime();
 
