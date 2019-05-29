@@ -1,15 +1,17 @@
 package co.edu.javeriana.algoritmos.proyecto.codethinkers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+
 import co.edu.javeriana.algoritmos.proyecto.ColorJugador;
 
 public class GrafoTablero {
-	private static int INF = Integer.MAX_VALUE;
+	private static int INF = 1000;
 	
 	private static int TAM_TABLERO = 11;
 	
@@ -79,6 +81,9 @@ public class GrafoTablero {
 
 		PriorityQueue<VerticeHex> colaPrioridad = new PriorityQueue<VerticeHex>((11*11+4), new ComparadorVerticeHex());
 		colaPrioridad.add(inicio);
+		
+		Map <VerticeHex, VerticeHex> previo = new HashMap <VerticeHex, VerticeHex>();
+		previo.put(inicio, null);
 
 		while (!colaPrioridad.isEmpty()) {
 		
@@ -90,12 +95,24 @@ public class GrafoTablero {
 				if (!u.isMarcado()) {
 					costoAristavu = obtenerCostoArista(v, u, color);
 					if (u.getDistancia() > v.getDistancia() + costoAristavu) {
+						System.out.println("Costo: "+ costoAristavu);
 						u.setDistancia(v.getDistancia() + costoAristavu);
+						previo.put(u, v);
 						colaPrioridad.offer(u);
 					}
 				}
 			}
 		}
+		
+		
+		/*
+		VerticeHex prueba = bordeBlancoDerecha;
+		while (prueba != null) {
+			prueba = previo.get(prueba);
+			if (prueba != null)
+				System.out.println (prueba.getFila() + "  " +prueba.getColumna());
+		}*/
+		
 		
 		if (color == ColorJugador.BLANCO) 
 			return bordeBlancoDerecha.getDistancia() - 1;
@@ -250,8 +267,11 @@ public class GrafoTablero {
 			if (u.getColor() == null && v.getColor() == ColorJugador.BLANCO)
 				return 0;
 			
-			if (u.getColor() == null && v.getColor() == ColorJugador.NEGRO)
+			if (u.getColor() == null && v.getColor() == ColorJugador.NEGRO) {
+				System.out.println("HOLAAA");
 				return INF;
+				
+			}
 			
 			if (u.getColor() == ColorJugador.NEGRO && v.getColor() == null)
 				return INF;
@@ -302,5 +322,8 @@ public class GrafoTablero {
 	public void aplicarJugada (int fila, int columna, ColorJugador color) {
 		tablero[fila][columna].setColor(color);
 	}
+	
+	
+	
 
 }
