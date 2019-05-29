@@ -126,8 +126,6 @@ public class JugadorCodeThinkers implements JugadorHex {
 						}
 
 						
-						
-						
 						aux2 = grafoTablero.obtenerDistanciaBordes(color) + grafoTablero.obtenerDistanciaBordes(contrincante)  + min;
 						if (contJugadas < 5) 
 							aux2 -= valoresCentro[i][j];
