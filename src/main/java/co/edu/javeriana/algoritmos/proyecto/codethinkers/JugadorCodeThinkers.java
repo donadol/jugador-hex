@@ -6,16 +6,32 @@ import co.edu.javeriana.algoritmos.proyecto.Jugada;
 import co.edu.javeriana.algoritmos.proyecto.JugadorHex;
 import co.edu.javeriana.algoritmos.proyecto.Tablero;
 
-public class JugadorCodethinkers implements JugadorHex {
+public class JugadorCodeThinkers implements JugadorHex {
 	
 	private int contJugadas;
 	private GrafoTablero grafoTablero;
-	public JugadorCodethinkers() {
+	public JugadorCodeThinkers() {
 		super();
 		contJugadas=0;
 		grafoTablero = new GrafoTablero();
 	}
 	
+	public int getContJugadas() {
+		return contJugadas;
+	}
+
+	public void setContJugadas(int contJugadas) {
+		this.contJugadas = contJugadas;
+	}
+
+	public GrafoTablero getGrafoTablero() {
+		return grafoTablero;
+	}
+
+	public void setGrafoTablero(GrafoTablero grafoTablero) {
+		this.grafoTablero = grafoTablero;
+	}
+
 	@Override
 	public Jugada jugar(Tablero tablero, ColorJugador color) {
 		System.out.println("Soy "+color+" llevo "+this.contJugadas);
@@ -30,7 +46,6 @@ public class JugadorCodethinkers implements JugadorHex {
 			return primeraJugada(tablero, color);
 		}
 		else {
-			System.out.println("Vamos hacer un grafo");
 			for(int i=0; i<11; ++i) {
 				for(int j=0; j<11; ++j) {
 					if(tablero.casilla(i, j) == null){
@@ -40,9 +55,11 @@ public class JugadorCodethinkers implements JugadorHex {
 								if(k!=i && l!=j) {
 									if(tablero.casilla(k, l)==null) {
 										grafoTablero.simularJugada(k, l, contrincante);
-										aux = grafoTablero.obtenerDistanciaBordes(color) - grafoTablero.obtenerDistanciaBordes(contrincante);
-										if(aux<min){
-											min = aux;
+										//aux = grafoTablero.obtenerDistanciaBordes(color) - grafoTablero.obtenerDistanciaBordes(contrincante);
+										
+										//System.out.println(i+","+j+"=>"+grafoTablero.obtenerDistanciaBordes(color)+" "+k+","+l+"=>"+grafoTablero.obtenerDistanciaBordes(contrincante)+"  "+ aux);
+										if(grafoTablero.obtenerDistanciaBordes(contrincante)<min){
+											min = grafoTablero.obtenerDistanciaBordes(contrincante);
 											fila2 = i;
 											columna2 = j;
 										}
@@ -51,11 +68,12 @@ public class JugadorCodethinkers implements JugadorHex {
 								}
 							}	
 						}
-						if(min>max) {
-							max = min;
+						if(grafoTablero.obtenerDistanciaBordes(color)-min>max) {
+							max = grafoTablero.obtenerDistanciaBordes(color)-min;
 							fila1 = fila2;
 							columna1 = columna2;
 						}
+						//System.out.println(min+" "+max);
 						grafoTablero.eliminarSimulacion(i, j);
 						min = 99999;
 					}

@@ -3,6 +3,7 @@ package co.edu.javeriana.algoritmos.proyecto.codethinkers;
 import java.util.List;
 
 import co.edu.javeriana.algoritmos.proyecto.ColorJugador;
+import co.edu.javeriana.algoritmos.proyecto.Jugada;
 
 public class PRUEBAS_SOLITARIAS_F {
 
@@ -14,7 +15,14 @@ public class PRUEBAS_SOLITARIAS_F {
 		
 		
 		GrafoTablero grafo = new GrafoTablero();
-		long startTime = System.nanoTime();
+		//grafo.simularJugada(0, 1, ColorJugador.NEGRO);
+		grafo.simularJugada(0, 5, ColorJugador.NEGRO);
+		//grafo.simularJugada(10, 0, ColorJugador.NEGRO);
+		System.out.println("DIJKSTRA: "+ grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
+		
+		grafo.simularJugada(5, 5, ColorJugador.BLANCO);
+		System.out.println("DIJKSTRA: "+ grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
+		/*long startTime = System.nanoTime();
 
 
 		
@@ -45,15 +53,39 @@ public class PRUEBAS_SOLITARIAS_F {
 		
 		grafo.simularJugada(5, 2, ColorJugador.BLANCO);
 		
-		grafo.simularJugada(7, 8, ColorJugador.BLANCO);
+		grafo.simularJugada(7, 8, ColorJugador.BLANCO);*/
 		
-		JugadorCodethinkers jugador =new JugadorCodethinkers();
 		
+		
+		
+		
+		JugadorCodethinkers jugador = new JugadorCodethinkers();
+		
+		TableroCodeThinkers tablero = new TableroCodeThinkers();
+		
+		
+		tablero.getTablero()[0][1] = ColorJugador.NEGRO;
+		System.out.println(tablero.casilla(0, 1));
+		
+		tablero.getTablero()[5][5] = ColorJugador.BLANCO;
+		System.out.println(tablero.casilla(5, 5));
+		
+		jugador.setContJugadas(2);
+		
+		
+		System.out.println("*********************");
+		
+		System.out.println(jugador.jugar(tablero, ColorJugador.NEGRO));
+		//tablero.aplicarJugada(jugador.jugar(tablero, ColorJugador.NEGRO), ColorJugador.BLANCO);
+		
+		/*System.out.println("*********************");
+		
+		System.out.println(jugador.jugar(tablero, ColorJugador.BLANCO));*/
 
 		
 			
-		System.out.println("NEGRO: "+grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
-		System.out.println("BLANCO: "+grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
+		/*System.out.println("NEGRO: "+grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
+		System.out.println("BLANCO: "+grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));*/
 
 	}
 
