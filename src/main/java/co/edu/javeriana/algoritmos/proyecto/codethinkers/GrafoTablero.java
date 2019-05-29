@@ -253,9 +253,6 @@ public class GrafoTablero {
 			if (u.getColor() == ColorJugador.NEGRO && v.getColor() == null)
 				return INF;
 			
-			
-						
-			
 		}
 		else { //Perspectiva del negro
 			
@@ -283,8 +280,6 @@ public class GrafoTablero {
 		return (   (fila >= 0 && fila < TAM_TABLERO)  &&  (columna >= 0 && columna < TAM_TABLERO) );
 	}
 	
-	
-	
 	//que pasa si la jugada está por fuera del tablero?? 
 	public void simularJugada (int fila, int columna, ColorJugador color) {
 		tablero[fila][columna].setColor(color);
@@ -294,7 +289,12 @@ public class GrafoTablero {
 		tablero[fila][columna].setColor(null);
 	}
 	
+	public ColorJugador casilla(int fila, int columna) {
+		return this.tablero[fila][columna].getColor();
+	}
 	
-
+	public void aplicarJugada (int fila, int columna, ColorJugador color) {
+		tablero[fila][columna].setColor(color);
+	}
 
 }

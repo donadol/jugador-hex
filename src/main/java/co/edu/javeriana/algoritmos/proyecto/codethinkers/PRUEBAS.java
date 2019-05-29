@@ -6,8 +6,6 @@ public class PRUEBAS {
 
 	public PRUEBAS() {
 		// TODO Auto-generated constructor stub
-		
-		
 	}
 
 	public static void main(String[] args) {
@@ -17,7 +15,7 @@ public class PRUEBAS {
 		for (int i = 0; i< 40000; i++) {
 			grafo.simularJugada(5, 5, ColorJugador.BLANCO);
 			grafo.simularJugada(5, 6, ColorJugador.BLANCO);
-			System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
+			grafo.obtenerDistanciaBordes(ColorJugador.BLANCO);
 			
 			//grafo.obtenerDistanciaBordes(ColorJugador.NEGRO);
 		}
