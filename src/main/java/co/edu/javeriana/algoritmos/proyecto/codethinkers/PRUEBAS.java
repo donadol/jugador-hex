@@ -19,11 +19,12 @@ public class PRUEBAS {
 			grafo.simularJugada(5, 3, ColorJugador.NEGRO);
 			grafo.simularJugada(9, 8, ColorJugador.BLANCO);
 			grafo.simularJugada(7, 6, ColorJugador.NEGRO);
-			grafo.simularJugada(3, 4, ColorJugador.BLANCO);
+			grafo.simularJugada(8, 5, ColorJugador.BLANCO);
 			grafo.simularJugada(1, 2, ColorJugador.NEGRO);
-			grafo.simularJugada(9, 5, ColorJugador.BLANCO);
-			grafo.simularJugada(6, 6, ColorJugador.NEGRO);
-			
+			grafo.simularJugada(10, 10, ColorJugador.BLANCO);
+			grafo.simularJugada(10, 3, ColorJugador.NEGRO);
+			grafo.simularJugada(8, 0, ColorJugador.BLANCO);
+			grafo.simularJugada(3, 2, ColorJugador.NEGRO);
 			System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
 			
 			//System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
