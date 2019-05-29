@@ -105,8 +105,12 @@ public class GrafoTablero {
 		}
 		
 		
+		VerticeHex prueba;
+		if (color == ColorJugador.BLANCO)
+			prueba = bordeBlancoDerecha;
+		else
+			prueba = bordeNegroInferior;
 		
-		VerticeHex prueba = bordeNegroInferior;
 		while (prueba != null) {
 			prueba = previo.get(prueba);
 			if (prueba != null)
