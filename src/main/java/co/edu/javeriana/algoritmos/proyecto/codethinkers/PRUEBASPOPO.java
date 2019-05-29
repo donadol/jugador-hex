@@ -293,44 +293,44 @@ public class PRUEBASPOPO {
 			System.out.println(" ");
 		}
 		grafoAux.imprimirTablero();	
-		
-//		GrafoTablero grafo = new GrafoTablero();
-//		long startTime = System.nanoTime();
-///*
-//		for (int i = 0; i< 40000; i++) {
-//			grafo.simularJugada(5, 5, ColorJugador.BLANCO);
-//			grafo.simularJugada(5, 6, ColorJugador.BLANCO);
-//			grafo.obtenerDistanciaBordes(ColorJugador.BLANCO);*/
-//
-//		
-//			grafo.simularJugada(8, 2, ColorJugador.BLANCO);
-//			grafo.simularJugada(9, 8, ColorJugador.BLANCO);
-//			grafo.simularJugada(3, 4, ColorJugador.BLANCO);
-//			grafo.simularJugada(9, 5, ColorJugador.BLANCO);
-//			
-//			
-//			
-//			grafo.simularJugada(5, 3, ColorJugador.NEGRO);
-//			
-//			grafo.simularJugada(7, 6, ColorJugador.NEGRO);
-//			
-//			grafo.simularJugada(1, 2, ColorJugador.NEGRO);
-//			
-//			grafo.simularJugada(6, 6, ColorJugador.NEGRO);
-//
-//			
-//		System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
-//		System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
-//			
-//			//System.out.println(grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
-//		
-//		long endTime = System.nanoTime();
-//		System.out.println("Duración: " + (endTime-startTime)/1e6 + " ms");
-//
 
 		System.out.println(" ");
-		System.out.println("------------------------------------PRUEBAS SOBRE DISTANCIAS---------------------------------------------");
+		System.out.println("------------------------------------PRUEBAS SOBRE JUAGAR---------------------------------------------");
 		System.out.println(" ");
+		
+		JugadorCodethinkers jugador = new JugadorCodethinkers();
+		JugadorCodethinkers jugador2 = new JugadorCodethinkers();
+		TableroCodeThinkers tablero =new TableroCodeThinkers();
+		
+		
+		
+		while(true) {
+			
+			tablero.aplicarJugada(jugador2.jugar(tablero, ColorJugador.BLANCO), ColorJugador.BLANCO);
+			
+			if(tablero.ganador() == ColorJugador.NEGRO) {
+				System.out.println("Gano el negro! ");
+				break;
+			}else if(tablero.ganador() == ColorJugador.BLANCO) {
+				System.out.println("Gano el blanco! ");
+				break;
+			}
+
+			tablero.aplicarJugada(jugador.jugar(tablero, ColorJugador.NEGRO), ColorJugador.NEGRO);
+			
+			if(tablero.ganador() == ColorJugador.NEGRO) {
+				System.out.println("Gano el negro! ");
+				break;
+			}else if(tablero.ganador() == ColorJugador.BLANCO) {
+				System.out.println("Gano el blanco! ");
+				break;
+			} 
+			tablero.imprimirTablero();
+		}
+		
+		tablero.imprimirTablero();
+		
+		
 	}
 
 }

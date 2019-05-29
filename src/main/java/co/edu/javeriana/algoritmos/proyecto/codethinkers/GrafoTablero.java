@@ -323,7 +323,6 @@ public class GrafoTablero {
 		tablero[fila][columna].setColor(null);
 	}
 	
-
 	public void imprimirTablero() {
 		System.out.print("\n");
 		for(int i = 0; i < 11; i++) {
@@ -349,8 +348,6 @@ public class GrafoTablero {
 	public void aplicarJugada (int fila, int columna, ColorJugador color) {
 		tablero[fila][columna].setColor(color);
 	}
-	
-	
-	
+
 
 }

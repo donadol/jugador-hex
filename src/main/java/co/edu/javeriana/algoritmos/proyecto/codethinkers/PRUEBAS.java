@@ -2,11 +2,15 @@ package co.edu.javeriana.algoritmos.proyecto.codethinkers;
 import java.util.Scanner;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.javeriana.algoritmos.proyecto.ColorJugador;
 import co.edu.javeriana.algoritmos.proyecto.Jugada;
+
+import co.edu.javeriana.algoritmos.proyecto.*;
+
 
 import co.edu.javeriana.algoritmos.proyecto.*;
 
@@ -21,10 +25,8 @@ public class PRUEBAS {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-
-		
+		// TODO Auto-generated method s
 		teclado = new Scanner(System.in);
 		cj1 = ColorJugador.NEGRO;
 		cj2 = ColorJugador.BLANCO;
@@ -61,10 +63,10 @@ public class PRUEBAS {
 			System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + numToChar(j.getFila()) + ", columna=" + (j.getColumna()+1)) + "]");
 			//System.out.print(numToChar(j.getFila())+""+(j.getColumna()+1)+" ");
 			tablero.aplicarJugada(j, cj2);
-//			if(j.isCambioColores()) {
-//				cj1=ColorJugador.BLANCO;
-//				cj2=ColorJugador.NEGRO;
-//			}
+			if(j.isCambioColores()) {
+				cj1=ColorJugador.BLANCO;
+				cj2=ColorJugador.NEGRO;
+			}
 		}
 	}
 	public static void playerVsPc(Tablero tablero) {
@@ -81,10 +83,10 @@ public class PRUEBAS {
 			System.out.println("Duración buscando una jugada para "+cj2+": "+ (endTime-startTime)/1e6 + " ms");
 			System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + (j.getFila()+1) + ", columna=" + numToChar(j.getColumna())) + "]");
 			tablero.aplicarJugada(j, cj2);
-//			if(j.isCambioColores()) {
-//				cj1=ColorJugador.BLANCO;
-//				cj2=ColorJugador.NEGRO;
-//			}
+			if(j.isCambioColores()) {
+				cj1=ColorJugador.BLANCO;
+				cj2=ColorJugador.NEGRO;
+			}
 		}
 	}
 	public static void pcVsPlayer(Tablero tablero) {
@@ -103,8 +105,8 @@ public class PRUEBAS {
 				j= new Jugada (true, fila-1, charToNum(columna));
 				System.out.println(cj2.name()+ " jugada: ["+(j.isCambioColores() ? "cambioColores":"fila=" + (j.getFila()+1) + ", columna=" + numToChar(j.getColumna())) + "]");
 				tablero.aplicarJugada(j, cj2);
-//				cj1=ColorJugador.BLANCO;
-//				cj2=ColorJugador.NEGRO;
+				cj1=ColorJugador.BLANCO;
+				cj2=ColorJugador.NEGRO;
 			}
 			else{
 				j= new Jugada (fila-1, charToNum(columna));

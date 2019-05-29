@@ -50,38 +50,34 @@ public class TableroCodeThinkers implements Tablero{
 
 	@Override
 	public void aplicarJugada(Jugada jugada, ColorJugador colorJugador) {
-
-
-		if(!violaReglas(jugada.getFila(), jugada.getColumna())  &&  tablero[jugada.getFila()][jugada.getColumna()] == null) {
-			
-			tablero[jugada.getFila()][jugada.getColumna()] = colorJugador;	
-
 		if(!violaReglas(jugada.getFila(), jugada.getColumna())) {
 			if(!jugada.isCambioColores() && this.tablero[jugada.getFila()][jugada.getColumna()]==null) {
 				tablero[jugada.getFila()][jugada.getColumna()] = colorJugador;	
+				this.numeroJugadas++;
 			}
-			else if(jugada.isCambioColores() && this.tablero[jugada.getFila()][jugada.getColumna()]!=colorJugador && this.numeroJugadas==1) {
-				this.tablero[jugada.getFila()][jugada.getColumna()] = null;
-				this.tablero[jugada.getColumna()][jugada.getFila()]=colorJugador;
+			else if(jugada.isCambioColores() && this.numeroJugadas==1) {
+				this.numeroJugadas++;
 			}
-
+			else {
+				System.out.println("Que haces tonto");
+			}
 		}
-			this.numeroJugadas++;
+		else {
+			System.out.println("Algo haces mal");
 		}
 	}
+
 	
 	@Override
 	public ColorJugador ganador() {
 		
 		boolean negro = false;
 		boolean blanco = false;
-		reiniciarTablervisitados();
 		
-		for(int filas = 0; filas < 11; filas++) {
+		for(int columnas = 0; columnas < 11; columnas++) {
 			
-			if(!tableroDeVisitado[0][filas] && tablero[0][filas] == ColorJugador.NEGRO && tablero[0][filas] != null) {
-
-				negro = negro || revisarFlujoNegro(0, filas);
+			if(!tableroDeVisitado[0][columnas] && tablero[0][columnas] != null && tablero[0][columnas] == ColorJugador.NEGRO) {
+				negro = negro || revisarFlujoNegro(0, columnas);
 			}
 			if(negro == true) {
 				reiniciarTablervisitados();
@@ -90,10 +86,9 @@ public class TableroCodeThinkers implements Tablero{
 			
 		}
 		
-		 for(int columnas = 0; columnas < 11; columnas++) {
-			
-			if(!tableroDeVisitado[columnas][0] && tablero[columnas][0] == ColorJugador.BLANCO && tablero[columnas][0] != null) { 
-				blanco = blanco || revisarFlujoBlanco(columnas, 0); 
+		 for(int filas = 0; filas < 11; filas++) {
+			if(!tableroDeVisitado[filas][0] && tablero[filas][0] == ColorJugador.BLANCO && tablero[filas][0] != null) { 
+				blanco = blanco || revisarFlujoBlanco(filas, 0); 
 			} 
 			if(blanco == true) {
 				reiniciarTablervisitados(); 
@@ -159,10 +154,8 @@ public class TableroCodeThinkers implements Tablero{
 				}
 			}
 		}
+		//Izq arriba
 		/*
-		 * //Izq arriba
-		 * 
-		 * 
 		 * if(!violaReglas(fila - 1, columna - 1) ) { if(!tableroDeVisitado[fila - 1][
 		 * columna - 1]&& tablero[fila - 1][ columna - 1]== ColorJugador.NEGRO &&
 		 * tablero[fila - 1][ columna - 1] != null) {
@@ -170,6 +163,7 @@ public class TableroCodeThinkers implements Tablero{
 		 * band = band || revisarFlujoNegro(fila - 1, columna - 1); if(band == true) {
 		 * return band; } } }
 		 */
+		
 		//Der arriba
 		if(!violaReglas(fila - 1, columna + 1)) {
 			if(!tableroDeVisitado[fila - 1][ columna + 1]  && tablero[fila - 1][ columna + 1]== ColorJugador.NEGRO && tablero[fila - 1][ columna + 1] != null) {
@@ -190,10 +184,8 @@ public class TableroCodeThinkers implements Tablero{
 				}
 			}
 		}
+		//der debajo
 		/*
-		 * //der debajo
-		 * 
-		 * 
 		 * if(!violaReglas(fila + 1, columna + 1)&& tablero[fila + 1][ columna + 1] ==
 		 * ColorJugador.NEGRO && tablero[fila + 1][ columna + 1] != null) {
 		 * if(!tableroDeVisitado[fila + 1][ columna + 1]) {
@@ -201,6 +193,7 @@ public class TableroCodeThinkers implements Tablero{
 		 * band = band || revisarFlujoNegro(fila + 1, columna + 1); if(band == true) {
 		 * return band; } } }
 		 */
+		
 		return band;
 		
 	}
@@ -258,12 +251,9 @@ public class TableroCodeThinkers implements Tablero{
 			}
 		}
 		/*
-		 * //Izq arriba
-		 * 
-		 * 
-		 * if(!violaReglas(fila - 1, columna - 1) ) { if(!tableroDeVisitado[fila - 1][
-		 * columna - 1]&& tablero[fila - 1][ columna - 1]== ColorJugador.BLANCO &&
-		 * tablero[fila - 1][ columna - 1] != null) {
+		 * //Izq arriba if(!violaReglas(fila - 1, columna - 1) ) {
+		 * if(!tableroDeVisitado[fila - 1][ columna - 1]&& tablero[fila - 1][ columna -
+		 * 1]== ColorJugador.BLANCO && tablero[fila - 1][ columna - 1] != null) {
 		 * 
 		 * band = band || revisarFlujoBlanco(fila - 1, columna - 1); if(band == true) {
 		 * return band; } } }
@@ -288,17 +278,15 @@ public class TableroCodeThinkers implements Tablero{
 				}
 			}
 		}
+		//der debajo
 		/*
-		 * //der debajo
-		 * 
-		 * 
 		 * if(!violaReglas(fila + 1, columna + 1)&& tablero[fila + 1][ columna + 1] ==
 		 * ColorJugador.BLANCO && tablero[fila + 1][ columna + 1] != null) {
 		 * if(!tableroDeVisitado[fila + 1][ columna + 1]) {
 		 * 
 		 * band = band || revisarFlujoBlanco(fila + 1, columna + 1); if(band == true) {
 		 * return band; } } }
-		 */
+		 */	
 		
 		return band;
 		
