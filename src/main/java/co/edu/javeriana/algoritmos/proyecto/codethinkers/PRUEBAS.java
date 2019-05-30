@@ -1,16 +1,8 @@
 package co.edu.javeriana.algoritmos.proyecto.codethinkers;
 import java.util.Scanner;
 
-
-
-import java.util.ArrayList;
-import java.util.List;
-
 import co.edu.javeriana.algoritmos.proyecto.ColorJugador;
 import co.edu.javeriana.algoritmos.proyecto.Jugada;
-
-import co.edu.javeriana.algoritmos.proyecto.*;
-
 
 import co.edu.javeriana.algoritmos.proyecto.*;
 
@@ -174,7 +166,7 @@ public class PRUEBAS {
 		while(true) {
 			
 			
-			tablero.aplicarJugada(jugador.jugar(tablero, ColorJugador.BLANCO),  ColorJugador.BLANCO);
+			tablero.aplicarJugada(jugador.jugar(tablero, ColorJugador.NEGRO),  ColorJugador.NEGRO);
 
 			tablero.imprimirTablero();
 			if(tablero.ganador() == ColorJugador.NEGRO) {
@@ -184,7 +176,7 @@ public class PRUEBAS {
 				System.out.println("Gano el blanco! ");
 				break;
 			} 
-			tablero.aplicarJugada(jugador2.jugar(tablero, ColorJugador.NEGRO), ColorJugador.NEGRO);
+			tablero.aplicarJugada(jugador2.jugar(tablero, ColorJugador.BLANCO), ColorJugador.BLANCO);
 
 			tablero.imprimirTablero();
 			

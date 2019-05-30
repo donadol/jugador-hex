@@ -252,7 +252,6 @@ public class GrafoTablero {
 				return 0;
 			
 			if (u.getColor() == null && v.getColor() == ColorJugador.NEGRO) {
-				//System.out.println("HOLAAA");
 				return INF;
 				
 			}
