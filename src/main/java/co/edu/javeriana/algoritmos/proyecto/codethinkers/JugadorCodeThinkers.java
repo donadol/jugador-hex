@@ -147,7 +147,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 
 	@Override
 	public String nombreJugador() {
-		return "HEXMEN";
+		return "El Hexterminador";
 	}
 	
 	public Jugada primeraJugada(Tablero tablero, ColorJugador color) {

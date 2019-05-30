@@ -59,11 +59,11 @@ public class TableroCodeThinkers implements Tablero{
 				this.numeroJugadas++;
 			}
 			else {
-				System.out.println("Que haces tonto");
+				System.out.println("Jugada inválida");
 			}
 		}
 		else {
-			System.out.println("Algo haces mal");
+			System.out.println("Jugada inválida");
 		}
 	}
 
