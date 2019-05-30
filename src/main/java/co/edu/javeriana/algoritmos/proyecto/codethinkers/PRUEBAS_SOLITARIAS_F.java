@@ -16,13 +16,15 @@ public class PRUEBAS_SOLITARIAS_F {
 		
 		GrafoTablero grafo = new GrafoTablero();
 		//grafo.simularJugada(0, 1, ColorJugador.NEGRO);
-		grafo.simularJugada(0, 5, ColorJugador.NEGRO);
-		//grafo.simularJugada(10, 0, ColorJugador.NEGRO);
-		System.out.println("DIJKSTRA: "+ grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
-		
+		grafo.simularJugada(5, 1, ColorJugador.NEGRO);
+		grafo.simularJugada(5, 2, ColorJugador.NEGRO);
+		grafo.simularJugada(5, 3, ColorJugador.NEGRO);
+		grafo.simularJugada(5, 4, ColorJugador.NEGRO);
 		grafo.simularJugada(5, 5, ColorJugador.BLANCO);
-		System.out.println("DIJKSTRA: "+ grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
-		/*long startTime = System.nanoTime();
+		System.out.println("PRUEBA: "+ grafo.obtenerDistanciaBordes(ColorJugador.BLANCO));
+		System.out.println("PRUEBA: "+ grafo.obtenerDistanciaBordes(ColorJugador.NEGRO));
+		//grafo.simularJugada(0, 1, ColorJugador.NEGRO);
+		
 
 
 		
@@ -53,7 +55,8 @@ public class PRUEBAS_SOLITARIAS_F {
 		
 		grafo.simularJugada(5, 2, ColorJugador.BLANCO);
 		
-		grafo.simularJugada(7, 8, ColorJugador.BLANCO);*/
+		grafo.simularJugada(7, 8, ColorJugador.BLANCO);
+		
 		
 		
 		
@@ -80,7 +83,7 @@ public class PRUEBAS_SOLITARIAS_F {
 		
 		/*System.out.println("*********************");
 		
-		System.out.println(jugador.jugar(tablero, ColorJugador.BLANCO));*/
+		System.out.println(jugador.jugar(tablero, ColorJugador.BLANCO));
 
 		
 			
