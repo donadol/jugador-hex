@@ -73,7 +73,7 @@ public class TableroCodeThinkers implements Tablero{
 		
 		boolean negro = false;
 		boolean blanco = false;
-		
+		reiniciarTablervisitados();
 		for(int columnas = 0; columnas < 11; columnas++) {
 			
 			if(!tableroDeVisitado[0][columnas] && tablero[0][columnas] != null && tablero[0][columnas] == ColorJugador.NEGRO) {

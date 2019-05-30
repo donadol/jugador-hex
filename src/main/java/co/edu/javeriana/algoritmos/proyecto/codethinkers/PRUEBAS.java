@@ -26,6 +26,7 @@ public class PRUEBAS {
 
 	public static void main(String[] args) {
 
+		playerVSPc2();
 		// TODO Auto-generated method s
 		teclado = new Scanner(System.in);
 		cj1 = ColorJugador.NEGRO;
@@ -115,6 +116,49 @@ public class PRUEBAS {
 			}
 		}
 	}
+	
+	public static void playerVSPc2() {
+		
+		System.out.println("PRUEBA GANADOR------------------------------");
+		
+		JugadorCodeThinkers jugador = new JugadorCodeThinkers();
+		Jugada j;
+		int fila;
+		int columna ;
+		Scanner teclado  = new Scanner(System.in);
+		TableroCodeThinkers tablero = new TableroCodeThinkers();
+		
+		while(true) {
+			
+			
+			System.out.println("ingrese filas y columnas: ");
+			fila = teclado.nextInt();
+			columna = teclado.nextInt();
+			j= new Jugada (fila, (columna));
+			tablero.aplicarJugada(j, ColorJugador.NEGRO);
+			tablero.imprimirTablero();
+			if(tablero.ganador() == ColorJugador.NEGRO) {
+				System.out.println("Gano el negro! ");
+				break;
+			}else if(tablero.ganador() == ColorJugador.BLANCO) {
+				System.out.println("Gano el blanco! ");
+				break;
+			} 
+			tablero.aplicarJugada(jugador.jugar(tablero, ColorJugador.BLANCO), ColorJugador.BLANCO);
+			tablero.imprimirTablero();
+			
+			if(tablero.ganador() == ColorJugador.NEGRO) {
+				System.out.println("Gano el negro! ");
+				break;
+			}else if(tablero.ganador() == ColorJugador.BLANCO) {
+				System.out.println("Gano el blanco! ");
+				break;
+			} 
+		}
+		
+		
+	}
+	
 	public static int charToNum(char n) {
 		return n-65;
 	}

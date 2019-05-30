@@ -1,8 +1,10 @@
 package co.edu.javeriana.algoritmos.proyecto.codethinkers;
 
 import java.util.List;
+import java.util.Scanner;
 
 import co.edu.javeriana.algoritmos.proyecto.ColorJugador;
+import co.edu.javeriana.algoritmos.proyecto.Jugada;
 
 public class PRUEBASPOPO {
 
@@ -303,8 +305,9 @@ public class PRUEBASPOPO {
 		TableroCodeThinkers tablero =new TableroCodeThinkers();
 		
 		
+		boolean band = false;
 		
-		while(true) {
+		while(band == true) {
 			
 			tablero.aplicarJugada(jugador2.jugar(tablero, ColorJugador.BLANCO), ColorJugador.BLANCO);
 			
@@ -330,7 +333,34 @@ public class PRUEBASPOPO {
 		
 		tablero.imprimirTablero();
 		
+		System.out.println("PRUEBA GANADOR------------------------------");
+		Jugada j;
+		int fila;
+		int columna ;
+		 Scanner teclado  = new Scanner(System.in);
+		while(true) {
+			
+			
+			System.out.println("ingrese filas y columnas: ");
+			fila = teclado.nextInt();
+			columna = teclado.nextInt();
+			j= new Jugada (fila, (columna));
+			tablero.aplicarJugada(j, ColorJugador.NEGRO);
+			tablero.aplicarJugada(new Jugada( 0 , 5), ColorJugador.BLANCO);
+			tablero.imprimirTablero();
+			
+			if(tablero.ganador() == ColorJugador.NEGRO) {
+				System.out.println("Gano el negro! ");
+				break;
+			}else if(tablero.ganador() == ColorJugador.BLANCO) {
+				System.out.println("Gano el blanco! ");
+				break;
+			} 
+		}
+		
 		
 	}
-
+	public static int charToNum(char n) {
+		return n-65;
+	}
 }
