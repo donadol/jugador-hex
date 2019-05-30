@@ -88,7 +88,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 
 	@Override
 	public Jugada jugar(Tablero tablero, ColorJugador color) {
-		int fila1 = 0, columna1 = 0, fila2 = 0, columna2 = 0;
+		int fila1 = 0, columna1 = 0;
 		int min2=9999, min=9999, aux, aux2;
 		ColorJugador contrincante = ColorJugador.NEGRO;
 		actualizarGrafo(tablero);
@@ -113,8 +113,6 @@ public class JugadorCodeThinkers implements JugadorHex {
 										aux =  grafoTablero.obtenerDistanciaBordes(contrincante) - grafoTablero.obtenerDistanciaBordes(color);
 										if(aux<min){
 											min = aux;
-											fila2 = i;
-											columna2 = j;
 										}
 										grafoTablero.eliminarSimulacion(k, l);
 									}
@@ -149,7 +147,7 @@ public class JugadorCodeThinkers implements JugadorHex {
 
 	@Override
 	public String nombreJugador() {
-		return "ElMejorJugadorDeHexDelUniversoEnteroProfePonganos5";
+		return "El Hexterminador";
 	}
 	
 	public Jugada primeraJugada(Tablero tablero, ColorJugador color) {

@@ -59,11 +59,11 @@ public class TableroCodeThinkers implements Tablero{
 				this.numeroJugadas++;
 			}
 			else {
-				System.out.println("Que haces tonto");
+				System.out.println("Jugada inválida");
 			}
 		}
 		else {
-			System.out.println("Algo haces mal");
+			System.out.println("Jugada inválida");
 		}
 	}
 
@@ -319,7 +319,6 @@ public class TableroCodeThinkers implements Tablero{
 				System.out.print(" ");
 			}
 			System.out.print("B ");
-			//System.out.printf(String.format("1%"+i+"s", "B "));
 			for(int j = 0; j < 11; j++) {
 				if(tablero[i][j] == ColorJugador.BLANCO)
 					System.out.print("b ");

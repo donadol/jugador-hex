@@ -30,7 +30,7 @@ public class LAURANOQUIEREPROBAR {
 			((TableroCodeThinkers)tablero).imprimirTablero();
 		}
 		
-		if( cj2 == tablero.ganador())
+		if( cj1 == tablero.ganador())
 			System.out.println(tablero.ganador()+" GANA");
 		else
 			System.out.println(tablero.ganador()+" :(");

@@ -67,10 +67,4 @@ public class VerticeHex {
 	public void setColumna(int columna) {
 		this.columna = columna;
 	}
-	
-	
-	
-	
-	
-
 }
