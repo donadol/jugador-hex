@@ -9,7 +9,6 @@ public class PRUEBAS {
 	static long startTime, endTime;
 	static ColorJugador cj1, cj2;
 	public PRUEBAS() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {

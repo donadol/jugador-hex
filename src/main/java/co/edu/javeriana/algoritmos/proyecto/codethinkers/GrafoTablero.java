@@ -93,13 +93,10 @@ public class GrafoTablero {
 		
 			v = colaPrioridad.remove();
 			v.setMarcado(true);
-			//System.out.println("Bueno: "+ v.getFila() +"  "+v.getColumna());
 			for (VerticeHex u: obtenerVecinos(v, color)) {
-				//System.out.println("	Vecino: " + u.getFila() +" "+ u.getColumna());
 				if (!u.isMarcado()) {
 					costoAristavu = obtenerCostoArista(v, u, color);
 					if (u.getDistancia() > v.getDistancia() + costoAristavu) {
-						//System.out.println("Costo: "+ costoAristavu);
 						u.setDistancia(v.getDistancia() + costoAristavu);
 						previo.put(u, v);
 						colaPrioridad.offer(u);
@@ -107,21 +104,7 @@ public class GrafoTablero {
 				}
 			}
 		}
-		
-		/*
-		VerticeHex prueba;
-		if (color == ColorJugador.BLANCO)
-			prueba = bordeBlancoDerecha;
-		else
-			prueba = bordeNegroInferior;
-		
-		while (prueba != null) {
-			prueba = previo.get(prueba);
-			if (prueba != null)
-				System.out.println (prueba.getFila() + "  " +prueba.getColumna());
-		}*/
-		
-		
+
 		if (color == ColorJugador.BLANCO) 
 			return bordeBlancoDerecha.getDistancia() ;
 		else
@@ -156,11 +139,6 @@ public class GrafoTablero {
 		bordeBlancoDerecha.setMarcado(false);
 	}
 	
-	
-	
-	
-	//OPTIMIZACIÓN MEMORIA: Crear lista como atributo y hacer clear? - menos memoria?
-	//OPTIMIZACIÓN : RETORNAR ANTES
 	List<VerticeHex> obtenerVecinos (VerticeHex v, ColorJugador color){
 		List<VerticeHex> vecinos = new ArrayList<VerticeHex>();
 		
@@ -247,13 +225,6 @@ public class GrafoTablero {
 	//(si es borde el costo debería ser 0 o restar 2)	
 	private int obtenerCostoArista (VerticeHex u, VerticeHex v, ColorJugador color) {
 		
-		/*if (u == bordeBlancoIzquierda || u == bordeBlancoDerecha || u == bordeNegroInferior || u == bordeNegroSuperior)
-			return 0;
-		
-		if (v == bordeBlancoIzquierda || v == bordeBlancoDerecha || v == bordeNegroInferior || v == bordeNegroSuperior)
-			return ;*/
-		
-		
 		if (u.getColor() == null && v.getColor() == null) {
 			return 1;
 		}
@@ -319,7 +290,6 @@ public class GrafoTablero {
 		return (   (fila >= 0 && fila < TAM_TABLERO)  &&  (columna >= 0 && columna < TAM_TABLERO) );
 	}
 	
-	//que pasa si la jugada está por fuera del tablero?? 
 	public void simularJugada (int fila, int columna, ColorJugador color) {
 		tablero[fila][columna].setColor(color);
 	}
@@ -331,7 +301,6 @@ public class GrafoTablero {
 	public void imprimirTablero() {
 		System.out.print("\n");
 		for(int i = 0; i < 11; i++) {
-			//System.out.print("Fila " + i + ": ");
 			for(int j = 0; j < 11; j++) {
 				if(tablero[i][j].getColor() == ColorJugador.BLANCO)
 					System.out.print("b ");
@@ -352,7 +321,4 @@ public class GrafoTablero {
 	public void aplicarJugada (int fila, int columna, ColorJugador color) {
 		tablero[fila][columna].setColor(color);
 	}
-	
-
-
 }
